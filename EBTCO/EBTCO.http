@@ -1,0 +1,6 @@
+@EBTCO_HostAddress = http://localhost:5276
+
+GET {{EBTCO_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
