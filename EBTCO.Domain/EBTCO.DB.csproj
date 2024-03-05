@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EBTCO.Core\EBTCO.Core.csproj" />
     <ProjectReference Include="..\EBTCO.DB\EBTCO.Domain.csproj" />
   </ItemGroup>
 

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EBTCO.DB\EBTCO.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

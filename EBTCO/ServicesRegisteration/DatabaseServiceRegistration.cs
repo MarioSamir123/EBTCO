@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EBTCO.DB;
+using EBTCO.Core.Contract.DBRepo;
+using EBTCO.RDS.Implementation;
+using ToursYard.RDS.Implementation;
 
 namespace EBTCO
 {
@@ -7,7 +10,7 @@ namespace EBTCO
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            string ConnectionString = configuration.GetConnectionString("mssql") ?? String.Empty;
+            string ConnectionString = configuration.GetSection("mssql").Value ?? String.Empty;
 
             services.AddDbContext<AppDbContext>((options =>
                 options.UseSqlServer(
@@ -19,6 +22,8 @@ namespace EBTCO
                     }
                 )
             ));
+            services.AddScoped(typeof(IBaseRepo<>), typeof(BaseRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }
