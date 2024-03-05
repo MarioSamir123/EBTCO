@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EBTCO.DB.Abstracts
+namespace EBTCO.Domain.Abstracts
 {
     public abstract class Entity
     {

@@ -1,6 +1,6 @@
-﻿using EBTCO.DB.Abstracts;
+﻿using EBTCO.Domain.Abstracts;
 
-namespace EBTCO.DB
+namespace EBTCO.Domain
 {
     public class Owner : Entity
     {

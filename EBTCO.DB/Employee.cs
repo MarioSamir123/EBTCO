@@ -1,7 +1,7 @@
-﻿using EBTCO.DB.Abstracts;
+﻿using EBTCO.Domain.Abstracts;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EBTCO.DB
+namespace EBTCO.Domain
 {
     public class Employee : Entity
     {

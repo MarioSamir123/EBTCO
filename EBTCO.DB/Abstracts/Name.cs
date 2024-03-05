@@ -1,4 +1,4 @@
-﻿namespace EBTCO.DB.Abstracts
+﻿namespace EBTCO.Domain.Abstracts
 {
     public class Name
     {

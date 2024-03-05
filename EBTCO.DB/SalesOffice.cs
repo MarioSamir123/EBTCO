@@ -1,7 +1,7 @@
-﻿using EBTCO.DB.Abstracts;
+﻿using EBTCO.Domain.Abstracts;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EBTCO.DB
+namespace EBTCO.Domain
 {
     public class SalesOffice : Entity
     {
@@ -9,8 +9,8 @@ namespace EBTCO.DB
         public Guid AddressID { get; set; }
         [ForeignKey("AddressID")]
         public Address? Address { get; set; }
-        public Guid? ManagerEmpID { get; set; }
-        [ForeignKey("ManagerEmpID")]
-        public Employee? ManagerEmp { get; set; }
+        //public Guid? ManagerEmpID { get; set; }
+        //[ForeignKey("ManagerEmpID")]
+        //public Employee? ManagerEmp { get; set; }
     }
 }
