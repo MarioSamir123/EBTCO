@@ -1,6 +1,7 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Features.SalesOffices.Commands.Add;
 using EBTCO.Core.Features.SalesOffices.Commands.Delete;
+using EBTCO.Core.Features.SalesOffices.Commands.HireManager;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,12 @@ namespace EBTCO.Controllers
         }
         [HttpDelete]
         public async Task<ActionResult<APIResponse<DeleteSalesOfficeCommandResponse>>> Delete ([FromQuery] DeleteSalesOfficeCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return GetApiResponse(result);
+        }
+        [HttpPut("HireManager")]
+        public async Task<ActionResult<APIResponse<HireManagerCommandResponse>>> HireManager([FromBody] HireManagerCommand command)
         {
             var result = await _mediator.Send(command);
             return GetApiResponse(result);

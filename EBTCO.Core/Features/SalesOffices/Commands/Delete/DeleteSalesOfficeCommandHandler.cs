@@ -24,7 +24,7 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.Delete
             {
                 return new APIResponse<DeleteSalesOfficeCommandResponse>
                 {
-                    Errors = new List<string> { "This office name is already token!" },
+                    Errors = new List<string> { "This office is not found!" },
                     HttpStatusCode = System.Net.HttpStatusCode.BadRequest,
                 };
             }
