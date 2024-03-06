@@ -1,6 +1,7 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Features.SalesOffices.Commands.Add;
 using EBTCO.Core.Features.SalesOffices.Commands.Delete;
+using EBTCO.Core.Features.SalesOffices.Commands.Edit;
 using EBTCO.Core.Features.SalesOffices.Commands.HireManager;
 using EBTCO.Core.Features.SalesOffices.Queries.GetAll;
 using EBTCO.Core.Features.SalesOffices.Queries.GetById;
@@ -27,6 +28,12 @@ namespace EBTCO.Controllers
         }
         [HttpDelete]
         public async Task<ActionResult<APIResponse<DeleteSalesOfficeCommandResponse>>> Delete([FromQuery] DeleteSalesOfficeCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return GetApiResponse(result);
+        }
+        [HttpPut]
+        public async Task<ActionResult<APIResponse<EditSalesOfficeCommandResponse>>> Edit([FromBody] EditSalesOfficeCommand command)
         {
             var result = await _mediator.Send(command);
             return GetApiResponse(result);

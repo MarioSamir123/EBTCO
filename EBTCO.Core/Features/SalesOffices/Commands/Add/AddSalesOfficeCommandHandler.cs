@@ -1,6 +1,5 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Contract.DBRepo;
-using EBTCO.Core.ExtensionMethods;
 using EBTCO.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +21,7 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.Add
                 .GetSource()
                 .AsNoTracking()
                 .AnyAsync(row => !row.IsDeleted && row.OfficeName.ToLower().Equals(request.OfficeName.ToLower()));
-            
+
             if (SalesOfficeExist)
             {
                 return new APIResponse<AddSalesOfficeCommandResponse>
@@ -31,7 +30,7 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.Add
                     HttpStatusCode = System.Net.HttpStatusCode.BadRequest,
                 };
             }
-            
+
             var newSalesOffice = request.Map();
             await salesOfficeRepo.AddAsync(newSalesOffice);
             await _unitOfWork.SaveChangesAsync();

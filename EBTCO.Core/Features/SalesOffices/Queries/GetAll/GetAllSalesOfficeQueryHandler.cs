@@ -31,7 +31,7 @@ namespace EBTCO.Core.Features.SalesOffices.Queries.GetAll
                         row.Address.State,
                         row.Address.ZipCode)
                 )).ToListAsync();
-            
+
             return new APIResponse<GetAllSalesOfficeQueryResponse>
             {
                 Data = new GetAllSalesOfficeQueryResponse(salesOffices),

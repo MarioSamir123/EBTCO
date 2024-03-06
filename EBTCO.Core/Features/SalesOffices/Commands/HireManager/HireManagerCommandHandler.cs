@@ -19,8 +19,8 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.HireManager
                 .GetSource()
                 .AsNoTracking()
                 .AnyAsync(row => row.OfficeID.Equals(request.officeID) && row.ID.Equals(request.employeeID));
-            
-            if (employeeExist) 
+
+            if (employeeExist)
             {
                 return new APIResponse<HireManagerCommandResponse>
                 {
@@ -33,7 +33,7 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.HireManager
                 .AsNoTracking()
                 .Where(row => row.ID.Equals(request.officeID))
                 .ExecuteUpdateAsync(row => row.SetProperty(so => so.ManagerEmpID, so => request.officeID));
-            
+
             return new APIResponse<HireManagerCommandResponse>
             {
                 Data = new HireManagerCommandResponse("Done!"),

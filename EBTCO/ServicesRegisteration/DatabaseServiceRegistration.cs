@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EBTCO.Core.Contract.DBRepo;
 using EBTCO.DB;
-using EBTCO.Core.Contract.DBRepo;
 using EBTCO.RDS.Implementation;
+using Microsoft.EntityFrameworkCore;
 using ToursYard.RDS.Implementation;
 
 namespace EBTCO

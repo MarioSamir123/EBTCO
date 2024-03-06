@@ -37,7 +37,7 @@ namespace ToursYard.ServicesRegisteration
 
             services.AddScoped<ITokenGenerator, TokenGenerator>();
             services.AddScoped<IAESEncryptor, AESEncrpytor>();
-            
+
             var key = Encoding.ASCII.GetBytes(secretKey);
 
             services.AddAuthentication(options =>

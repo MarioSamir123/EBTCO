@@ -31,7 +31,7 @@ namespace EBTCO.RDS.Implementation
 
         public IQueryable<T> GetSource()
         {
-            
+
             IQueryable<T> source = _appDBContext.Set<T>();
             return source;
         }

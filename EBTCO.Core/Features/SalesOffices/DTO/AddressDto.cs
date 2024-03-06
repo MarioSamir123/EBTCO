@@ -8,12 +8,12 @@ namespace EBTCO.Core.Features.SalesOffices.DTO
         {
             return new Address
             {
-                BuildingNo = BuildingNo,
-                Street = Street,
-                City = City,
-                State = State,
-                ZipCode = ZipCode,
-                Timestamp = DateTime.UtcNow,   
+                BuildingNo = BuildingNo.Trim(),
+                Street = Street.Trim(),
+                City = City.Trim(),
+                State = State.Trim(),
+                ZipCode = ZipCode.Trim(),
+                Timestamp = DateTime.UtcNow,
             };
         }
     }

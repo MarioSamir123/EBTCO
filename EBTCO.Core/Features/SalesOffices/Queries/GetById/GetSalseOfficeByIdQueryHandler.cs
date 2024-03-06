@@ -1,6 +1,5 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Contract.DBRepo;
-using EBTCO.Core.Features.SalesOffices.Commands.Delete;
 using EBTCO.Core.Features.SalesOffices.DTO;
 using EBTCO.Domain;
 using MediatR;
@@ -26,10 +25,10 @@ namespace EBTCO.Core.Features.SalesOffices.Queries.GetById
                     row.ID,
                     row.OfficeName,
                     new AddressDto(
-                        row.Address.BuildingNo, 
-                        row.Address.Street, 
-                        row.Address.City, 
-                        row.Address.State, 
+                        row.Address.BuildingNo,
+                        row.Address.Street,
+                        row.Address.City,
+                        row.Address.State,
                         row.Address.ZipCode)
                 )).FirstOrDefaultAsync();
 
