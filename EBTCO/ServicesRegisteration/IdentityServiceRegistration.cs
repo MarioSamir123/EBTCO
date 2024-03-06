@@ -34,6 +34,7 @@ namespace ToursYard.ServicesRegisteration
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
+
             services.AddScoped<ITokenGenerator, TokenGenerator>();
             services.AddScoped<IAESEncryptor, AESEncrpytor>();
             

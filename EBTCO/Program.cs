@@ -1,19 +1,27 @@
 using EBTCO;
+using EBTCO.Core.ServiceRegister;
+using System.Reflection;
+using ToursYard.ServicesRegisteration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var assembly = Assembly.GetEntryAssembly();
+
+if (assembly != null)
+{
+    builder.Configuration.AddUserSecrets(assembly).AddEnvironmentVariables();
+}
+MediatorServiceRegistration.AddApplicationServices(builder.Services);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 DatabaseServiceRegistration.AddApplicationServices(builder.Services, builder.Configuration);
+IdentityServiceRegistration.AddApplicationServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
