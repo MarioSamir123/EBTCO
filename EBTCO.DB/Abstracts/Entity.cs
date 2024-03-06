@@ -7,5 +7,6 @@ namespace EBTCO.Domain.Abstracts
         [Key]
         public Guid ID { get; set; }
         public DateTime Timestamp { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

@@ -16,11 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Owners\Commands\Add\" />
-    <Folder Include="Features\Owners\Commands\Delete\" />
-    <Folder Include="Features\Owners\Commands\Edit\" />
-    <Folder Include="Features\Owners\Queries\GetAll\" />
-    <Folder Include="Features\Owners\Queries\GetById\" />
     <Folder Include="Features\Employees\Commands\Add\" />
     <Folder Include="Features\Employees\Commands\Delete\" />
     <Folder Include="Features\Employees\Commands\Edit\" />

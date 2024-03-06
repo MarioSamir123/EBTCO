@@ -10,6 +10,5 @@ namespace EBTCO.Domain
         [ForeignKey("AddressID")]
         public Address Address { get; set; }
         public Guid ManagerEmpID { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }
