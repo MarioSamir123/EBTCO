@@ -376,3 +376,4 @@ FodyWeavers.xsd
 /EBTCO.Core/Features/SalesOffices/Queries/GetById/GetSalseOfficeByIdQuery.cs
 /EBTCO.Core/Features/SalesOffices/Queries/GetById/GetSalseOfficeByIdQueryHandler.cs
 /EBTCO.Core/Features/SalesOffices/Queries/GetById/GetSalseOfficeByIdQueryResponse.cs
+/EBTCO.Core/Contract/DbRepo/ISalesOfficeService.cs

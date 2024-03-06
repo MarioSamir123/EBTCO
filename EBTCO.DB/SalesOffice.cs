@@ -8,7 +8,7 @@ namespace EBTCO.Domain
         public required String OfficeName { get; set; }
         public Guid AddressID { get; set; }
         [ForeignKey("AddressID")]
-        public Address? Address { get; set; }
+        public Address Address { get; set; }
         public Guid ManagerEmpID { get; set; }
         public bool IsDeleted { get; set; }
     }
