@@ -19,7 +19,7 @@ namespace EBTCO.Core.Features.Owners.Commands.Delete
             var owner = await ownerRepo.GetSource()
                 .FirstOrDefaultAsync(row => !row.IsDeleted && row.ID.Equals(request.ownerId));
 
-            if (owner == null) 
+            if (owner == null)
             {
                 return new APIResponse<DeleteOwnerCommandResponse>
                 {

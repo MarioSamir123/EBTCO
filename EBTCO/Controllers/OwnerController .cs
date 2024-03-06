@@ -49,14 +49,5 @@ namespace EBTCO.Controllers
             var result = await _mediator.Send(query);
             return GetApiResponse(result);
         }
-        
-        //[HttpPut("HireManager")]
-        //public async Task<ActionResult<APIResponse<HireManagerCommandResponse>>> HireManager([FromBody] HireManagerCommand command)
-        //{
-        //    var result = await _mediator.Send(command);
-        //    return GetApiResponse(result);
-        //}
-
-
     }
 }

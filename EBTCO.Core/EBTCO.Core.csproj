@@ -15,12 +15,4 @@
     <ProjectReference Include="..\EBTCO.DB\EBTCO.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Employees\Commands\Add\" />
-    <Folder Include="Features\Employees\Commands\Delete\" />
-    <Folder Include="Features\Employees\Commands\Edit\" />
-    <Folder Include="Features\Employees\Queries\GetAll\" />
-    <Folder Include="Features\Employees\Queries\GetById\" />
-  </ItemGroup>
-
 </Project>

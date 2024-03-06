@@ -15,13 +15,13 @@ namespace EBTCO.Core.Features.Owners.Commands.Add
         public async Task<APIResponse<AddOwnerCommandResponse>> Handle(AddOwnerCommand request, CancellationToken cancellationToken)
         {
             var owner = request.Map();
-            
+
             await _unitOfWork.GetRepository<Owner>().AddAsync(owner);
             await _unitOfWork.SaveChangesAsync();
 
             return new APIResponse<AddOwnerCommandResponse>()
             {
-                Data = new AddOwnerCommandResponse(owner.ID), 
+                Data = new AddOwnerCommandResponse(owner.ID),
                 HttpStatusCode = System.Net.HttpStatusCode.Created,
             };
         }
