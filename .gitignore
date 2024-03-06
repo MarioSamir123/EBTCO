@@ -361,3 +361,18 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/EBTCO.Core/Features/SalesOffices/Commands/Delete/DeleteSalesOfficeCommand.cs
+/EBTCO.Core/Features/SalesOffices/Commands/Delete/DeleteSalesOfficeCommandHandler.cs
+/EBTCO.Core/Features/SalesOffices/Commands/Delete/DeleteSalesOfficeCommandResponse.cs
+/EBTCO.Core/Features/SalesOffices/Commands/Edit/EditSalesOfficeCommand.cs
+/EBTCO.Core/Features/SalesOffices/Commands/Edit/EditSalesOfficeCommandHandler.cs
+/EBTCO.Core/Features/SalesOffices/Commands/Edit/EditSalesOfficeCommandResponse.cs
+/EBTCO.Core/Features/SalesOffices/Commands/HireManager/HireManagerCommand.cs
+/EBTCO.Core/Features/SalesOffices/Commands/HireManager/HireManagerCommandHandler.cs
+/EBTCO.Core/Features/SalesOffices/Commands/HireManager/HireManagerCommandResponse.cs
+/EBTCO.Core/Features/SalesOffices/Queries/GetAll/GetAllSalesOfficeQuery.cs
+/EBTCO.Core/Features/SalesOffices/Queries/GetAll/GetAllSalesOfficeQueryHandler.cs
+/EBTCO.Core/Features/SalesOffices/Queries/GetAll/GetAllSalesOfficeQueryResponse.cs
+/EBTCO.Core/Features/SalesOffices/Queries/GetById/GetSalseOfficeByIdQuery.cs
+/EBTCO.Core/Features/SalesOffices/Queries/GetById/GetSalseOfficeByIdQueryHandler.cs
+/EBTCO.Core/Features/SalesOffices/Queries/GetById/GetSalseOfficeByIdQueryResponse.cs
