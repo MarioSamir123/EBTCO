@@ -13,5 +13,6 @@ namespace EBTCO.Domain
         public Guid OfficeID { get; set; }
         [ForeignKey("OfficeID")]
         public SalesOffice? SalesOffice { get; set; }
+        public int OwningProgress { get; set; }
     }
 }

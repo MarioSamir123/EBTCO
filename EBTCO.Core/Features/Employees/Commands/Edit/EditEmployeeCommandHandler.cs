@@ -47,7 +47,7 @@ namespace EBTCO.Core.Features.Employees.Commands.Edit
             employee.Name.LastName = request.LastName;
             employee.Birthday = request.Birthday;
             employee.Age = (DateTime.UtcNow - request.Birthday).Days / 365;
-            employee.Timestamp = DateTime.UtcNow; 
+            employee.Timestamp = DateTime.UtcNow;
             employeeRepo.Update(employee);
             await _unitOfWork.SaveChangesAsync();
             return new APIResponse<EditEmployeeCommandResponse>
