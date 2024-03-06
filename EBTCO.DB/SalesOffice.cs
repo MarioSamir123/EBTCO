@@ -9,8 +9,6 @@ namespace EBTCO.Domain
         public Guid AddressID { get; set; }
         [ForeignKey("AddressID")]
         public Address? Address { get; set; }
-        //public Guid? ManagerEmpID { get; set; }
-        //[ForeignKey("ManagerEmpID")]
-        //public Employee? ManagerEmp { get; set; }
+        public Guid ManagerEmpID { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 using EBTCO;
 using EBTCO.Core.ServiceRegister;
+using EBTCO.DB;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using ToursYard.ServicesRegisteration;
 
@@ -22,6 +24,11 @@ IdentityServiceRegistration.AddApplicationServices(builder.Services, builder.Con
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await db.Database.MigrateAsync();
+}
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

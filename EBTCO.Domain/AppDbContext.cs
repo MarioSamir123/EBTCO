@@ -27,6 +27,5 @@ namespace EBTCO.DB
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropOwner> PropOwners { get; set; }
         public DbSet<SalesOffice> SalesOffices { get; set; }
-
     }
 }
