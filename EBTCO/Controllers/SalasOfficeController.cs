@@ -2,6 +2,7 @@
 using EBTCO.Core.Features.SalesOffices.Commands.Add;
 using EBTCO.Core.Features.SalesOffices.Commands.Delete;
 using EBTCO.Core.Features.SalesOffices.Commands.HireManager;
+using EBTCO.Core.Features.SalesOffices.Queries.GetAll;
 using EBTCO.Core.Features.SalesOffices.Queries.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,6 @@ namespace EBTCO.Controllers
         {
             _mediator = mediator;
         }
-
         [HttpPost]
         public async Task<ActionResult<APIResponse<AddSalesOfficeCommandResponse>>> Add([FromBody] AddSalesOfficeCommand command)
         {
@@ -41,6 +41,12 @@ namespace EBTCO.Controllers
         public async Task<ActionResult<APIResponse<GetSalseOfficeByIdQueryResponse>>> GetByID([FromQuery] GetSalseOfficeByIdQuery query)
         {
             var result = await _mediator.Send(query);
+            return GetApiResponse(result);
+        }
+        [HttpGet]
+        public async Task<ActionResult<APIResponse<GetAllSalesOfficeQueryResponse>>> GetAll()
+        {
+            var result = await _mediator.Send(new GetAllSalesOfficeQuery());
             return GetApiResponse(result);
         }
     }

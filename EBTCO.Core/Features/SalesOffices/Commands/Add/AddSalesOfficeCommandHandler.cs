@@ -1,5 +1,6 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Contract.DBRepo;
+using EBTCO.Core.ExtensionMethods;
 using EBTCO.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +17,13 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.Add
         public async Task<APIResponse<AddSalesOfficeCommandResponse>> Handle(AddSalesOfficeCommand request, CancellationToken cancellationToken)
         {
             var salesOfficeRepo = _unitOfWork.GetRepository<SalesOffice>();
+
             bool SalesOfficeExist = await salesOfficeRepo
                 .GetSource()
                 .AsNoTracking()
-                .AnyAsync(row => row.OfficeName.ToLower().Equals(request.OfficeName.ToLower()));
+                .AnyAsync(row => !row.IsDeleted && row.OfficeName.ToLower().Equals(request.OfficeName.ToLower()));
             
-            if (SalesOfficeExist) 
+            if (SalesOfficeExist)
             {
                 return new APIResponse<AddSalesOfficeCommandResponse>
                 {
