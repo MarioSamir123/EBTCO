@@ -1,5 +1,5 @@
 ﻿using EBTCO.Core.Api;
-using EBTCO.Core.Features.Employees.DTO;
+using EBTCO.Core.Features.SalesOffices.DTO;
 using EBTCO.Domain;
 using MediatR;
 using System.ComponentModel.DataAnnotations;

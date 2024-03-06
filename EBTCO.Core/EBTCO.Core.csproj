@@ -26,10 +26,6 @@
     <Folder Include="Features\Employees\Commands\Edit\" />
     <Folder Include="Features\Employees\Queries\GetAll\" />
     <Folder Include="Features\Employees\Queries\GetById\" />
-    <Folder Include="Features\SalesOffices\Commands\Delete\" />
-    <Folder Include="Features\SalesOffices\Commands\Edit\" />
-    <Folder Include="Features\SalesOffices\Queries\GetById\" />
-    <Folder Include="Features\SalesOffices\Queries\GetAll\" />
   </ItemGroup>
 
 </Project>

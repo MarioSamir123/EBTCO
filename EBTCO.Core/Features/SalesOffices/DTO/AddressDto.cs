@@ -1,6 +1,6 @@
 ﻿using EBTCO.Domain;
 
-namespace EBTCO.Core.Features.Employees.DTO
+namespace EBTCO.Core.Features.SalesOffices.DTO
 {
     public record AddressDto(String BuildingNo, String Street, String City, String State, String ZipCode)
     {

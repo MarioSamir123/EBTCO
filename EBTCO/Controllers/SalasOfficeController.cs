@@ -1,5 +1,6 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Features.SalesOffices.Commands.Add;
+using EBTCO.Core.Features.SalesOffices.Commands.Delete;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,12 @@ namespace EBTCO.Controllers
 
         [HttpPost]
         public async Task<ActionResult<APIResponse<AddSalesOfficeCommandResponse>>> Add([FromBody] AddSalesOfficeCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return GetApiResponse(result);
+        }
+        [HttpDelete]
+        public async Task<ActionResult<APIResponse<DeleteSalesOfficeCommandResponse>>> Delete ([FromQuery] DeleteSalesOfficeCommand command)
         {
             var result = await _mediator.Send(command);
             return GetApiResponse(result);
