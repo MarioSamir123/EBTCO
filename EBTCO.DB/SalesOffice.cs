@@ -10,5 +10,7 @@ namespace EBTCO.Domain
         [ForeignKey("AddressID")]
         public Address Address { get; set; }
         public Guid ManagerEmpID { get; set; }
+        public int NoOfProperty { get; set; }
+        public String ManagerName { get; set; }
     }
 }

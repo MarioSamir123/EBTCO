@@ -29,13 +29,15 @@ namespace EBTCO.Core.Features.SalesOffices.Queries.GetAll
                         row.Address.Street,
                         row.Address.City,
                         row.Address.State,
-                        row.Address.ZipCode)
+                        row.Address.ZipCode),
+                    row.NoOfProperty,
+                    row.ManagerName
                 )).ToListAsync();
 
             return new APIResponse<GetAllSalesOfficeQueryResponse>
             {
                 Data = new GetAllSalesOfficeQueryResponse(salesOffices),
-                HttpStatusCode = salesOffices.Count == 0 ? System.Net.HttpStatusCode.NoContent : System.Net.HttpStatusCode.OK
+                HttpStatusCode = System.Net.HttpStatusCode.OK
             };
         }
     }

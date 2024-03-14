@@ -29,8 +29,9 @@ namespace EBTCO.Core.Features.SalesOffices.Queries.GetById
                         row.Address.Street,
                         row.Address.City,
                         row.Address.State,
-                        row.Address.ZipCode)
-                )).FirstOrDefaultAsync();
+                        row.Address.ZipCode), 
+                    row.NoOfProperty,
+                    row.ManagerName)).FirstOrDefaultAsync();
 
             if (salesOffice == null)
             {

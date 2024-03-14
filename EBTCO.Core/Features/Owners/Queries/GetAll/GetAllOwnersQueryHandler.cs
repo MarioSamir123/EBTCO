@@ -25,7 +25,7 @@ namespace EBTCO.Core.Features.Owners.Queries.GetAll
             return new APIResponse<GetAllOwnersQueryResponse>
             {
                 Data = new GetAllOwnersQueryResponse(owners),
-                HttpStatusCode = owners.Count == 0 ? System.Net.HttpStatusCode.NoContent : System.Net.HttpStatusCode.OK
+                HttpStatusCode = System.Net.HttpStatusCode.OK
             };
         }
     }

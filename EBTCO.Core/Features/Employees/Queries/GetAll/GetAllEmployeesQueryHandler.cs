@@ -19,14 +19,15 @@ namespace EBTCO.Core.Features.Employees.Queries.GetAll
             var employees = await _unitOfWork.GetRepository<Employee>()
                 .GetSource()
                 .AsNoTracking()
+                .Include(row => row.SalesOffice)
                 .Where(row => !row.IsDeleted)
-                .Select(row => new EmployeesDto(row.ID, row.OfficeID, row.Name.FirstName, row.Name.LastName, row.Birthday))
+                .Select(row => new EmployeesDto(row.ID, row.OfficeID, row.Name.FirstName, row.Name.LastName, row.SalesOffice.OfficeName, row.Birthday))
                 .ToListAsync();
 
             return new APIResponse<GetAllEmployeesQueryResponse>
             {
                 Data = new GetAllEmployeesQueryResponse(employees),
-                HttpStatusCode = employees.Count == 0 ? System.Net.HttpStatusCode.NoContent : System.Net.HttpStatusCode.OK
+                HttpStatusCode = System.Net.HttpStatusCode.OK
             };
         }
     }

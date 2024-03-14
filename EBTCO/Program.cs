@@ -40,5 +40,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.Map("/", () => "Welcome in EBTCO !");
 app.Run();

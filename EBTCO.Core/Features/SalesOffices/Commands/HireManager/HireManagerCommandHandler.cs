@@ -3,6 +3,7 @@ using EBTCO.Core.Contract.DBRepo;
 using EBTCO.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace EBTCO.Core.Features.SalesOffices.Commands.HireManager
 {
@@ -15,12 +16,14 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.HireManager
         }
         public async Task<APIResponse<HireManagerCommandResponse>> Handle(HireManagerCommand request, CancellationToken cancellationToken)
         {
-            var employeeExist = await _unitOfWork.GetRepository<Employee>()
+            var employeeFullName = await _unitOfWork.GetRepository<Employee>()
                 .GetSource()
                 .AsNoTracking()
-                .AnyAsync(row => row.OfficeID.Equals(request.officeID) && row.ID.Equals(request.employeeID));
+                .Where(row => row.OfficeID.Equals(request.officeID) && row.ID.Equals(request.employeeID))
+                .Select(row => $"{row.Name.FirstName} {row.Name.LastName}")
+                .FirstOrDefaultAsync();
 
-            if (employeeExist)
+            if (employeeFullName.IsNullOrEmpty())
             {
                 return new APIResponse<HireManagerCommandResponse>
                 {
@@ -28,11 +31,13 @@ namespace EBTCO.Core.Features.SalesOffices.Commands.HireManager
                     HttpStatusCode = System.Net.HttpStatusCode.BadRequest,
                 };
             }
-            await _unitOfWork.GetRepository<SalesOffice>()
+
+            var salesOfficeQuery = _unitOfWork.GetRepository<SalesOffice>()
                 .GetSource()
                 .AsNoTracking()
-                .Where(row => row.ID.Equals(request.officeID))
-                .ExecuteUpdateAsync(row => row.SetProperty(so => so.ManagerEmpID, so => request.officeID));
+                .Where(row => row.ID.Equals(request.officeID));
+            await salesOfficeQuery.ExecuteUpdateAsync(row => row.SetProperty(so => so.ManagerEmpID, so => request.officeID));
+            await salesOfficeQuery.ExecuteUpdateAsync(row => row.SetProperty(so => so.ManagerName, so => employeeFullName));
 
             return new APIResponse<HireManagerCommandResponse>
             {
