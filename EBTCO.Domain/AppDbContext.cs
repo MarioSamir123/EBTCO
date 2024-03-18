@@ -2,6 +2,7 @@
 using EBTCO.Domain.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace EBTCO.DB
 {
@@ -17,6 +18,9 @@ namespace EBTCO.DB
             base.OnModelCreating(builder);
             builder.Entity<Employee>().OwnsOne(e => e.Name);
             builder.Entity<Owner>().OwnsOne(e => e.Name);
+            builder.Entity<SalesOffice>()
+                .HasIndex(e => e.ManagerEmpID)
+                .IsUnique();
         }
 
         public DbSet<Address> Addresses { get; set; }

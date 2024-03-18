@@ -10,6 +10,5 @@ namespace EBTCO.Domain
         [ForeignKey("OfficeID")]
         public SalesOffice SalesOffice { get; set; }
         public DateTime Birthday { get; set; }
-        public int Age { get; set; }
     }
 }

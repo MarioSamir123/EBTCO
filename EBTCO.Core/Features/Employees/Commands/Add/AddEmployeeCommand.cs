@@ -12,7 +12,6 @@ namespace EBTCO.Core.Features.Employees.Commands.Add
             {
                 Name = new Domain.Abstracts.Name { FirstName = FirstName, LastName = LastName },
                 Birthday = Birthday,
-                Age = (DateTime.UtcNow - Birthday).Days / 365,
                 OfficeID = OfficeId,
                 Timestamp = DateTime.UtcNow,
             };
