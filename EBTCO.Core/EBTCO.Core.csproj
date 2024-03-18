@@ -15,8 +15,4 @@
     <ProjectReference Include="..\EBTCO.DB\EBTCO.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Properties\Queries\" />
-  </ItemGroup>
-
 </Project>

@@ -5,6 +5,7 @@ using EBTCO.Core.Features.SalesOffices.Commands.Edit;
 using EBTCO.Core.Features.SalesOffices.Commands.HireManager;
 using EBTCO.Core.Features.SalesOffices.Queries.GetAll;
 using EBTCO.Core.Features.SalesOffices.Queries.GetById;
+using EBTCO.Core.Features.SalesOffices.Queries.GetOfficeNames;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,9 +52,15 @@ namespace EBTCO.Controllers
             return GetApiResponse(result);
         }
         [HttpGet]
-        public async Task<ActionResult<APIResponse<GetAllSalesOfficeQueryResponse>>> GetAll()
+        public async Task<ActionResult<APIResponse<GetAllSalesOfficeQueryResponse>>> GetAll([FromQuery] GetAllSalesOfficeQuery query)
         {
-            var result = await _mediator.Send(new GetAllSalesOfficeQuery());
+            var result = await _mediator.Send(query);
+            return GetApiResponse(result);
+        }
+        [HttpGet("Names")]
+        public async Task<ActionResult<APIResponse<GetOfficeNamesQueryResponse>>> GetOfficeNames()
+        {
+            var result = await _mediator.Send(new GetOfficeNamesQuery());
             return GetApiResponse(result);
         }
     }

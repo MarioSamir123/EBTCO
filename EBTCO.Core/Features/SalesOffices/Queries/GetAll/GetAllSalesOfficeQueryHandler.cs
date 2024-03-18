@@ -16,23 +16,20 @@ namespace EBTCO.Core.Features.SalesOffices.Queries.GetAll
         }
         public async Task<APIResponse<GetAllSalesOfficeQueryResponse>> Handle(GetAllSalesOfficeQuery request, CancellationToken cancellationToken)
         {
-            var salesOffices = await _unitOfWork.GetRepository<SalesOffice>()
+            var salesOfficesQuery = request.Order(_unitOfWork.GetRepository<SalesOffice>()
                 .GetSource()
                 .AsNoTracking()
                 .Include(row => row.Address)
-                .Where(row => !row.IsDeleted)
+                .Where(row => !row.IsDeleted));
+
+            var salesOffices = await salesOfficesQuery
                 .Select(row => new SalesOfficeDto(
                     row.ID,
                     row.OfficeName,
-                    new AddressDto(
-                        row.Address.BuildingNo,
-                        row.Address.Street,
-                        row.Address.City,
-                        row.Address.State,
-                        row.Address.ZipCode),
+                    new AddressDto(row.Address.BuildingNo, row.Address.Street, row.Address.City, row.Address.State, row.Address.ZipCode),
                     row.NoOfProperty,
-                    row.ManagerName
-                )).ToListAsync();
+                    row.ManagerName)
+                ).ToListAsync();
 
             return new APIResponse<GetAllSalesOfficeQueryResponse>
             {

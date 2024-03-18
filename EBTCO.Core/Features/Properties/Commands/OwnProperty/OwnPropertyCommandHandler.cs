@@ -68,8 +68,27 @@ namespace EBTCO.Core.Features.Properties.Commands.OwnProperty
                 int rowEffected = await propOwnerRepo.GetSource()
                     .AsNoTracking()
                     .Where(row => row.PropertyID.Equals(request.propId) && row.OwnerID.Equals(request.ownerId))
-                    .ExecuteUpdateAsync(row => row.SetProperty(p => p.PercentOwned, request.percentage));
+                    .ExecuteUpdateAsync(row => row.SetProperty(p => p.PercentOwned, p => p.PercentOwned + request.percentage));
 
+                int perSum = await propOwnerRepo.GetSource()
+                    .AsNoTracking()
+                    .Where(row => row.PropertyID.Equals(request.propId))
+                    .SumAsync(row => row.PercentOwned);
+
+                await _unitOfWork.GetRepository<Property>()
+                    .GetSource()
+                    .AsNoTracking()
+                    .Where(row => row.ID.Equals(request.propId))
+                    .ExecuteUpdateAsync(row => row.SetProperty(p => p.OwningProgress, perSum));
+
+                if (perSum == 100)
+                {
+                    await _unitOfWork.GetRepository<Property>()
+                    .GetSource()
+                    .AsNoTracking()
+                    .Where(row => row.ID.Equals(request.propId))
+                    .ExecuteUpdateAsync(row => row.SetProperty(p => p.Status, PropStatus.Sold));
+                }
                 if (rowEffected == 0)
                 {
                     await propOwnerRepo.AddAsync(new PropOwner

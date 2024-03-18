@@ -30,19 +30,6 @@ namespace EBTCO.Core.Features.Employees.Commands.Edit
                 };
             }
 
-            var officeExist = await _unitOfWork.GetRepository<SalesOffice>()
-                .GetSource()
-                .AsNoTracking()
-                .AnyAsync(row => !row.IsDeleted && row.ID.Equals(request.OfficeId));
-            if (!officeExist)
-            {
-                return new APIResponse<EditEmployeeCommandResponse>
-                {
-                    Errors = new List<string> { "This Office is not found!" },
-                    HttpStatusCode = System.Net.HttpStatusCode.NotFound
-                };
-            }
-            employee.OfficeID = request.OfficeId;
             employee.Name.FirstName = request.FirstName;
             employee.Name.LastName = request.LastName;
             employee.Birthday = request.Birthday;

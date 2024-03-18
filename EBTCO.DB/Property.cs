@@ -5,8 +5,9 @@ namespace EBTCO.Domain
 {
     public class Property : Entity
     {
-        public Decimal Price { get; set; }
-        public bool Status { get; set; }
+        public Decimal PriceFrom { get; set; }
+        public Decimal PriceTo { get; set; }
+        public PropStatus Status { get; set; }
         public int NoBedrooms { get; set; }
         public int NoBathrooms { get; set; }
         public required String City { get; set; }

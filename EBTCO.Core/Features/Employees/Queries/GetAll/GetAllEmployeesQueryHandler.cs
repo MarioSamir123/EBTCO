@@ -20,7 +20,7 @@ namespace EBTCO.Core.Features.Employees.Queries.GetAll
                 .GetSource()
                 .AsNoTracking()
                 .Include(row => row.SalesOffice)
-                .Where(row => !row.IsDeleted)
+                .Where(request.GetFilter())
                 .Select(row => new EmployeesDto(row.ID, row.OfficeID, row.Name.FirstName, row.Name.LastName, row.SalesOffice.OfficeName, row.Birthday))
                 .ToListAsync();
 
