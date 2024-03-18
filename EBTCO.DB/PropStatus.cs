@@ -1,6 +1,6 @@
 ﻿namespace EBTCO.Domain
 {
-    public enum PropStatus
+    public enum PropStatus : byte
     {
         Active,
         Sold,
