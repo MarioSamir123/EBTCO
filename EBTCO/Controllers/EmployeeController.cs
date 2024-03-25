@@ -6,12 +6,14 @@ using EBTCO.Core.Features.Employees.Queries.GetAll;
 using EBTCO.Core.Features.Employees.Queries.GetById;
 using EBTCO.Core.Features.Employees.Queries.GetEmployeesNames;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EBTCO.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeeController : BaseController
     {
         private readonly IMediator _mediator;

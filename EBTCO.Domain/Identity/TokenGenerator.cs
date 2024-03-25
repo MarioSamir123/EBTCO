@@ -1,5 +1,4 @@
-﻿using EBTCO.Core.Contract;
-using EBTCO.Core.Contract.Identity;
+﻿using EBTCO.Core.Contract.Identity;
 using EBTCO.Domain.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -14,12 +13,9 @@ namespace EBTCO.RDS.Identity
     {
         private readonly UserManager<User> _userManager;
         private readonly IConfiguration _configuration;
-        private readonly IAESEncryptor _encryptor;
-
-        public TokenGenerator(UserManager<User> userManager, IConfiguration configuration, IAESEncryptor encryptor)
+        public TokenGenerator(UserManager<User> userManager, IConfiguration configuration)
         {
             _configuration = configuration;
-            _encryptor = encryptor;
             _userManager = userManager;
         }
 
@@ -50,8 +46,7 @@ namespace EBTCO.RDS.Identity
             var token = tokenHandler.CreateToken(tokenDescriptor);
             await _userManager.UpdateAsync(User);
             String jwt = tokenHandler.WriteToken(token);
-            String jwe = _encryptor.Encrypt(jwt);
-            return jwe;
+            return jwt;
         }
     }
 }

@@ -1,9 +1,8 @@
-using EBTCO;
 using EBTCO.Core.ServiceRegister;
 using EBTCO.DB;
+using EBTCO.ServicesRegisteration;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using ToursYard.ServicesRegisteration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +20,7 @@ builder.Services.AddSwaggerGen();
 
 DatabaseServiceRegistration.AddApplicationServices(builder.Services, builder.Configuration);
 IdentityServiceRegistration.AddApplicationServices(builder.Services, builder.Configuration);
+SwaggerServiceRegistration.AddApplicationServices(builder.Services);
 
 var app = builder.Build();
 
@@ -29,11 +29,9 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     await db.Database.MigrateAsync();
 }
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

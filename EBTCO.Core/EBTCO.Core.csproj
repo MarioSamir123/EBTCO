@@ -15,4 +15,8 @@
     <ProjectReference Include="..\EBTCO.DB\EBTCO.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Identity\Commands\LoginByFacebook\" />
+  </ItemGroup>
+
 </Project>

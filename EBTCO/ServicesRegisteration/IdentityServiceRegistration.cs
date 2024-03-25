@@ -1,15 +1,15 @@
 ﻿using EBTCO.Core.Contract;
 using EBTCO.Core.Contract.Identity;
 using EBTCO.DB;
+using EBTCO.DB.Identity;
 using EBTCO.Domain.Identity;
 using EBTCO.RDS.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using ToursYard.Core.Helpers;
 
-namespace ToursYard.ServicesRegisteration
+namespace EBTCO.ServicesRegisteration
 {
     public static class IdentityServiceRegistration
     {
@@ -36,7 +36,7 @@ namespace ToursYard.ServicesRegisteration
             .AddDefaultTokenProviders();
 
             services.AddScoped<ITokenGenerator, TokenGenerator>();
-            services.AddScoped<IAESEncryptor, AESEncrpytor>();
+            services.AddScoped<IAuthorizeService, AuthorizeService>();
 
             var key = Encoding.ASCII.GetBytes(secretKey);
 

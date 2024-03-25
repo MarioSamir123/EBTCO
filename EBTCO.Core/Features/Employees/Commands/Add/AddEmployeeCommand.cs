@@ -4,7 +4,7 @@ using MediatR;
 
 namespace EBTCO.Core.Features.Employees.Commands.Add
 {
-    public record AddEmployeeCommand(Guid OfficeId, String FirstName, String LastName, DateTime Birthday) : IRequest<APIResponse<AddEmployeeCommandResponse>>
+    public record AddEmployeeCommand(Guid OfficeId, String FirstName, String LastName, DateOnly Birthday) : IRequest<APIResponse<AddEmployeeCommandResponse>>
     {
         public Employee Map()
         {

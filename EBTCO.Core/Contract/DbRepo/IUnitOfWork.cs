@@ -4,9 +4,5 @@
     {
         IBaseRepo<TEntity> GetRepository<TEntity>() where TEntity : class;
         Task<int> SaveChangesAsync();
-
-        Task BeginTransction();
-        Task RollbackTransaction();
-        Task CommitTransaction();
     }
 }

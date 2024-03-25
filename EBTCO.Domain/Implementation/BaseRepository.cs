@@ -18,11 +18,6 @@ namespace EBTCO.RDS.Implementation
             return entity;
         }
 
-        public async Task AddRangeAsync(IEnumerable<T> entities)
-        {
-            await _appDBContext.Set<T>().AddRangeAsync(entities);
-        }
-
         public T Update(T entity)
         {
             _appDBContext.Set<T>().Update(entity);

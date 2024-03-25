@@ -3,12 +3,14 @@ using EBTCO.Core.Features.Properties.Commands.AddProperty;
 using EBTCO.Core.Features.Properties.Commands.OwnProperty;
 using EBTCO.Core.Features.Properties.Queries.GetProperties;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EBTCO.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PropertiesController : BaseController
     {
         private readonly IMediator _mediator;

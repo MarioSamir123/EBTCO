@@ -4,7 +4,7 @@ using EBTCO.RDS.Implementation;
 using Microsoft.EntityFrameworkCore;
 using ToursYard.RDS.Implementation;
 
-namespace EBTCO
+namespace EBTCO.ServicesRegisteration
 {
     public static class DatabaseServiceRegistration
     {

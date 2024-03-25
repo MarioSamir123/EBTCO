@@ -5,12 +5,14 @@ using EBTCO.Core.Features.Owners.Commands.Edit;
 using EBTCO.Core.Features.Owners.Queries.GetAll;
 using EBTCO.Core.Features.Owners.Queries.GetById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EBTCO.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OwnerController : BaseController
     {
         private readonly IMediator _mediator;

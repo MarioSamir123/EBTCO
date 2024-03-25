@@ -2,7 +2,5 @@
 
 namespace EBTCO.Domain.Identity
 {
-    public class User : IdentityUser<Guid>
-    {
-    }
+    public class User : IdentityUser<Guid>;
 }
