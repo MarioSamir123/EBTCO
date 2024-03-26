@@ -36,6 +36,9 @@ namespace EBTCO.DB.Identity
             return new LoginResult { Result = result };
         }
 
+        public async Task<User?> GetUserByEmail(string email) => await _userManager.Users
+                .FirstOrDefaultAsync(row => row.Email != null && row.Email.ToLower().Equals(email));
+
         public async Task<LoginResult> Login(string email, string Password)
         {
             var user = await _userManager.Users

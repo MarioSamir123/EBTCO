@@ -84,12 +84,6 @@ namespace EBTCO.Core.Features.Properties.Commands.OwnProperty
                     .Where(row => row.PropertyID.Equals(request.propId))
                     .SumAsync(row => row.PercentOwned);
 
-            await _unitOfWork.GetRepository<Property>()
-                .GetSource()
-                .AsNoTracking()
-                .Where(row => row.ID.Equals(request.propId))
-                .ExecuteUpdateAsync(row => row.SetProperty(p => p.OwningProgress, perSum));
-            
             if (perSum == 100)
             {
                 await _unitOfWork.GetRepository<Property>()

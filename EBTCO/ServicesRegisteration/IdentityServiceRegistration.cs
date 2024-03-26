@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ToursYard.RDS.Identity;
 
 namespace EBTCO.ServicesRegisteration
 {
@@ -37,6 +38,7 @@ namespace EBTCO.ServicesRegisteration
 
             services.AddScoped<ITokenGenerator, TokenGenerator>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
+            services.AddScoped<IGoogleAuthService, GoogleAuthService>();
 
             var key = Encoding.ASCII.GetBytes(secretKey);
 

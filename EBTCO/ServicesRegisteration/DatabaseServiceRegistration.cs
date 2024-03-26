@@ -10,7 +10,7 @@ namespace EBTCO.ServicesRegisteration
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            string ConnectionString = configuration.GetSection("mssql").Value ?? String.Empty;
+            string ConnectionString = configuration.GetSection("ebtco_db").Value ?? String.Empty;
 
             services.AddDbContext<AppDbContext>((options =>
                 options.UseSqlServer(

@@ -20,6 +20,9 @@ namespace EBTCO.DB
             builder.Entity<SalesOffice>()
                 .HasIndex(e => e.ManagerEmpID)
                 .IsUnique();
+            builder.Entity<Property>()
+                .Property(p => p.OwningProgress)
+                .HasComputedColumnSql("dbo.SumOwningPerc(ID)");
         }
 
         public DbSet<Address> Addresses { get; set; }

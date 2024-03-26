@@ -1,5 +1,6 @@
 ﻿using EBTCO.Core.Api;
 using EBTCO.Core.Features.Identity.Commands.Login;
+using EBTCO.Core.Features.Identity.Commands.LoginByGoogle;
 using EBTCO.Core.Features.Identity.Commands.Signup;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,12 @@ namespace EBTCO.Controllers
         }
         [HttpPost("Signup")]
         public async Task<ActionResult<APIResponse<SignupCommandResponse>>> Signup([FromBody] SignupCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return GetApiResponse(result);
+        }
+        [HttpPost("LoginByGoogle")]
+        public async Task<ActionResult<APIResponse<LoginByGoogleCommandResponse>>> LoginByGoogle([FromBody] LoginByGoogleCommand command)
         {
             var result = await _mediator.Send(command);
             return GetApiResponse(result);
